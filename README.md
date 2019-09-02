@@ -2,7 +2,9 @@
 
 # flutter_socket_io
 
-Esta biblioteca foi desenvolvida para ser usada na comunicação com [Socket.Io][]: https://socket.io/
+Esta biblioteca foi desenvolvida para ser usada na comunicação com [Socket.Io][]
+
+* [Socket.Io]: https://socket.io/
 
 ## Como usar
 
