@@ -10,45 +10,49 @@ class SocketIo{
 
   WebSocket socket;
 
-  //final myStream = numberCreator().listen(onData)
-
+  ///
   /// Initialize socket connection 
   /// * hostaname without prefix 
   /// * example: 127.0.0.1
   /// * don't use http://locahost or ws://127.0.0.1, etc...
   /// * port 3000
   /// * the default [port] is 3000
+  /// 
   connect({String hostname, int port = 3000}) async{
 
     socket = await WebSocket.connect('ws://$hostname:$port/socket.io/?EIO=3&transport=websocket');
 
-    socket.listen((data){}).onData((data) => receivedData(data));
+    socket.listen(null).onData((data) => socketReceivedData(data));
 
   }
 
-  final StreamController myStream = StreamController(
-    onListen: (){
-      print('startListen');
-    }
-  );
+  final StreamController<List<dynamic>> socketStream = StreamController.broadcast();
 
-  void receivedData(data){
+  void socketReceivedData(String data){
+    // Parse received data String to json
     List<dynamic> parsed = socketParser.json(data);
 
-    myStream.add(parsed);
+    // Add data to stream
+    socketStream.add(parsed);
   }
 
-  on(event, void onData(event)) async{
-    myStream.stream.listen((data){
-      print(data[0]);
+  void on(listeningEvent, void onData(List<dynamic> data)) async{
+    socketStream.stream.listen((data){
+      String eventName = data[0].toString();
+      
+      if(eventName == listeningEvent){
+        data.remove(eventName);
+
+        onData(data);
+      }
     });
   }
 
-  emit(event, List<dynamic> data){
+  void emit(event, List<dynamic> data){
 
   }
 
-  close(){
-    myStream.close();
+  void close(){
+    socketStream.close();
   }
 }
