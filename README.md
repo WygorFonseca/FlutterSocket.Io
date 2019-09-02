@@ -4,7 +4,7 @@
 
 Esta biblioteca foi desenvolvida para ser usada na comunicação com [Socket.Io][]
 
-* [Socket.Io]: https://socket.io/
+[Socket.Io]: https://socket.io/
 
 ## Como usar
 
@@ -20,5 +20,4 @@ socket.on('nomeDoEvento', (data){
 
 // Envia evento para o servidor
 socket.emit('nomeDoEvento', [{ 'nome': 'Joãozinho' }]);
-
 ```
