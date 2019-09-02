@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'dart:convert' as prefix0;
-
 const PACKET_CODES = {
   'CONNECTION': 0,
   'RECEIVED': 42

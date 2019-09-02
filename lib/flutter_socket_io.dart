@@ -4,15 +4,9 @@ import 'dart:io';
 import 'dart:async';
 import 'package:flutter_socket_io/parser.dart';
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
-
 /// Socket Instance
 class SocketIo{
-  SocketIoParser socketDataParser = new SocketIoParser();
+  SocketIoParser socketParser = new SocketIoParser();
 
   WebSocket socket;
 
@@ -26,24 +20,10 @@ class SocketIo{
   /// * the default [port] is 3000
   connect({String hostname, int port = 3000}) async{
 
-    return proccessConnection(hostname, port);
-
-  }
-
-  proccessConnection(String hostname, int port) async{
-
     socket = await WebSocket.connect('ws://$hostname:$port/socket.io/?EIO=3&transport=websocket');
 
-    socket.listen((data){
-    })
-    .onData((data) => receivedData(data));
+    socket.listen((data){}).onData((data) => receivedData(data));
 
-  }
-
-  void receivedData(data){
-    List<dynamic> parsed = socketDataParser.json(data);
-
-    print(parsed);
   }
 
   final StreamController myStream = StreamController(
@@ -52,23 +32,23 @@ class SocketIo{
     }
   );
 
-  nts() async{
-    await Future.delayed(Duration(seconds: 3));
+  void receivedData(data){
+    List<dynamic> parsed = socketParser.json(data);
 
-    myStream.stream.listen((data){
-      print('Stream data $data');
-    });
-
-    await Future.delayed(Duration(seconds: 3));
-
-    myStream.add([]);
+    myStream.add(parsed);
   }
 
   on(event, void onData(event)) async{
-
+    myStream.stream.listen((data){
+      print(data[0]);
+    });
   }
 
   emit(event, List<dynamic> data){
 
+  }
+
+  close(){
+    myStream.close();
   }
 }
