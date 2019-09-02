@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dart-lang/http.svg?branch=master)](https://travis-ci.org/dart-lang/http)
+
 # flutter_socket_io
 
 A new Flutter package project.
