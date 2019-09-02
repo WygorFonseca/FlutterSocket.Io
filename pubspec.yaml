@@ -1,6 +1,6 @@
 name: flutter_socket_io
-description: A new Flutter package project.
-version: 0.0.1
+description: Socket.Io Client for Flutter
+version: 0.0.2
 author:
 homepage:
 
