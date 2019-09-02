@@ -13,6 +13,11 @@ import 'package:flutter_socket_io/flutter_socket_io.dart';
 
 final socket = new SocketIo();
 
+socket.connect(
+  hostname: "127.0.0.1",
+  port: 3000 // Default port is 3000
+);
+
 // Escuta eventos no socket
 socket.on('nomeDoEvento', (data){
   print(data);
