@@ -73,6 +73,8 @@ socket.emit('nomeDoEvento', { 'nome': 'Wygor' });
 // Emit => { "nome": "Wygor" }
 
 socket.emit('nomeDoEvento', [{ 'nome': 'Wygor', 'idade': 19 }]);
+// Emit => [{ 'nome': 'Wygor', 'idade': 19 }]
 
 socket.emit('nomeDoEvento', [{ 'nome': 'Wygor', 'idade': 19 }, { 'nome': 'Joãozinho', 'idade': null }]);
+// Emit => [{ 'nome': 'Wygor', 'idade': 19 }, { 'nome': 'Joãozinho', 'idade': null }]
 ```
