@@ -6,9 +6,16 @@ import 'package:flutter_socket_io/parser.dart';
 
 /// Socket Instance
 class SocketIo{
+  String hostname;
+  int port = 3000;
+
   SocketIoParser socketParser = new SocketIoParser();
 
   WebSocket socket;
+
+  SocketIo(this.hostname, this.port){
+    connect(this.hostname, this.port);
+  }
 
   ///
   /// Initialize socket connection 
@@ -18,7 +25,7 @@ class SocketIo{
   /// * port 3000
   /// * the default [port] is 3000
   /// 
-  connect({String hostname, int port = 3000}) async{
+  connect(String hostname, int port) async{
 
     socket = await WebSocket.connect('ws://$hostname:$port/socket.io/?EIO=3&transport=websocket');
 
