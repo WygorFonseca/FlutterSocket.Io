@@ -20,7 +20,7 @@ Cria um novo gerenciador para o `hostname` especificado
 > **Nota:** Se você estiver emulando o app em um dispositivo real e o servidor estiver hospedado localmente. localhost ou 127.0.0.1 não irá funcionar. Você deverá utilizar o endereço IPV4 do servidor.
 
 ```dart
-import 'package:flutter_socket_io/flutter_socket_io.dart';
+import 'package:socket_io_client/flutter_socket_io.dart';
 
 final socket = new SocketIo("127.0.0.1", 3000);
 
