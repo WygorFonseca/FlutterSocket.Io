@@ -24,6 +24,14 @@ class SocketIoParser{
 
   }
 
+  String eventEmitParse(eventName, dynamic data){
+    List jsonData = [eventName];
+
+    data is List ? jsonData.addAll(data) : jsonData.add(data);
+
+    return "42"+jsonEncode(jsonData);
+  }
+
   List<dynamic> json(data){
 
     int packetType = this.packetType(data);
