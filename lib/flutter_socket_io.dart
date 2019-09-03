@@ -4,17 +4,20 @@ import 'dart:io';
 import 'dart:async';
 import 'package:flutter_socket_io/parser.dart';
 
+import 'dart:convert';
+
 /// Socket Instance
 class SocketIo{
   String hostname;
   int port = 3000;
+  Duration timeLimit = Duration(seconds: 30);
 
   SocketIoParser socketParser = new SocketIoParser();
 
   WebSocket socket;
 
   SocketIo(this.hostname, this.port){
-    connect(this.hostname, this.port);
+    connect(this.hostname, this.port, this.timeLimit);
   }
 
   ///
@@ -25,9 +28,13 @@ class SocketIo{
   /// * port 3000
   /// * the default [port] is 3000
   /// 
-  connect(String hostname, int port) async{
+  connect(String hostname, int port, Duration timeLimit) async{
 
-    socket = await WebSocket.connect('ws://$hostname:$port/socket.io/?EIO=3&transport=websocket');
+    socket = await WebSocket.connect('ws://$hostname:$port/socket.io/?EIO=3&transport=websocket')
+    .timeout(timeLimit)
+    .catchError((error){
+      print('Conexão com o websocket falhou! Verifique os parâmetros e tente novamente');
+    });
 
     socket.listen(null).onData((data) => socketReceivedData(data));
 
@@ -55,8 +62,11 @@ class SocketIo{
     });
   }
 
-  void emit(event, List<dynamic> data){
+  void emit(String eventName, dynamic data) async{
+    String parsed = socketParser.eventEmitParse(eventName, data);
 
+    await Future.delayed(Duration(seconds: 5));
+    socket.add(parsed);
   }
 
   void close(){
