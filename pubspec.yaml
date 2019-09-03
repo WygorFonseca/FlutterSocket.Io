@@ -1,8 +1,8 @@
 name: flutter_socket_io
 description: Socket.Io Client for Flutter
-version: 0.0.2
-author:
-homepage:
+version: 0.11.0+1
+author: Wygor Fonseca
+homepage: 
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
