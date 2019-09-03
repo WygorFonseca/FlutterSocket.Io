@@ -12,7 +12,7 @@ Esta biblioteca foi desenvolvida para ser usada na comunicação com [Socket.Io]
 
 Cria um novo gerenciador para o `hostname` especificado
 
-* hostname (String) não deve conter protocolo (http, https, ws, etc..)
+* hostname (*String) não deve conter protocolo (http, https, ws, etc..*)
 * port (Int), por padrão é 3000
 
 > **Nota:** Ainda não é possível fazer conexões usando SSL.
@@ -38,16 +38,24 @@ socket.emit('nomeDoEvento', [{ 'nome': 'Joãozinho' }]);
 
 Registra um novo gerenciador para o evento.
 
-* nomeDoEvento (String)
-* callback Function
-* **Returns** List<dynamic>
+* **nomeDoEvento** *String*
+* **callback** *Function*
+* **Returns** *List*
+
+```dart
+socket.on('evento_um', (data){
+  print(data);
+
+  // Output => [...]
+});
+```
 
 ---
 
 `socket.emit(nomeDoEvento, args)`
 
-Emite um evento para o socket identificado por uma String `nomeDoEvento`.
-Os argumentos `args` devem ser do tipo List<dynamic>
+Emite um evento para o socket identificado por uma *String `nomeDoEvento`*.
+Os argumentos `args` devem ser do tipo *List*
 
 ```dart
 socket.emit('nomeDoEvento', { 'nome': 'Wygor' });
