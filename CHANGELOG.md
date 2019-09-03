@@ -1,3 +1,14 @@
+## 0.12.0
+
+* Documentation fixes
+
+### Breaking Changes
+
+* Instead of use
+`import 'package:flutter_socket_io/flutter_socket_io.dart';`
+you will need to use
+`import 'package:socket_io_client/flutter_socket_io.dart';`
+
 ## 0.11.0+1
 
 * Documentation fixes.
