@@ -2,9 +2,7 @@ library flutter_socket_io;
 
 import 'dart:io';
 import 'dart:async';
-import 'package:flutter_socket_io/parser.dart';
-
-import 'dart:convert';
+import 'package:socket_io_client/parser.dart';
 
 /// Socket Instance
 class SocketIo{
