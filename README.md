@@ -8,6 +8,10 @@ Esta biblioteca foi desenvolvida para ser usada na comunicação com [Socket.Io]
 
 ## Como usar
 
+`connect({ hostname, port })`
+* hostname (String) não deve conter protocolo (http, https, ws, etc..)
+* port (Int), por padrão é 3000
+
 ```dart
 import 'package:flutter_socket_io/flutter_socket_io.dart';
 
@@ -19,7 +23,7 @@ socket.connect(
 );
 
 // Escuta eventos no socket
-socket.on('nomeDoEvento', (data){
+socket.on('eventp', (data){
   print(data);
 });
 
