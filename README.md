@@ -32,6 +32,8 @@ socket.on('evento', (data){
 socket.emit('nomeDoEvento', [{ 'nome': 'Joãozinho' }]);
 ```
 
+---
+
 `socket.on(nomeDoEvento, callback)`
 
 Registra um novo gerenciador para o evento.
@@ -39,6 +41,8 @@ Registra um novo gerenciador para o evento.
 * nomeDoEvento (String)
 * callback Function
 * **Returns** List<dynamic>
+
+---
 
 `socket.emit(nomeDoEvento, args)`
 
