@@ -1,4 +1,5 @@
-# socket_io_client
+# Socket.IO Client
+🚧 Em desenvolvimento 🚧
 
 Esta biblioteca foi desenvolvida para ser usada na comunicação com [Socket.Io][]
 
