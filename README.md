@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/dart-lang/http.svg?branch=master)](https://travis-ci.org/dart-lang/http)
-
 # socket_io_client
 
 Esta biblioteca foi desenvolvida para ser usada na comunicação com [Socket.Io][]
